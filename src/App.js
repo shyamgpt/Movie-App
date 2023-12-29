@@ -6,10 +6,10 @@ function App(){
   return (
    <>
    
-   {/* <Navbar/>
-   <MovieList/> */}
-   <HeadingOne/>
-   <HeadingTwo/>
+   <Navbar/>
+   <MovieList/>
+   {/* <HeadingOne/>
+   <HeadingTwo/> */}
    </>
 
   )

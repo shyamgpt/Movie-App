@@ -1,18 +1,14 @@
 import { Component } from "react";
-// import "./index.css";
+import "./index.css";
 
 class MovieCard extends Component{
-    
 
-   
-
-    
 
     render(){
 
-        const {movies, addStars, decStars} = this.props;
+        const {movies, addStars, decStar, ToggleFav, ToggleCart} = this.props;
 
-        const{title,plot, price, rating, stars,fav,isIncart} = this.props.movies;
+        const{title,plot, price, rating, stars,fav,isInCart} = this.props.movies; 
         return (
             <div className="main">
                 <div className="movie-card">
@@ -32,7 +28,7 @@ class MovieCard extends Component{
                                 <img className="str-btn" 
                                 alt="decrase" 
                                 src="https://cdn-icons-png.flaticon.com/128/56/56889.png"
-                                onClick={() =>{decStars(movies)}}/>
+                                onClick={()=>{decStar(movies)}}/>
                                 
                                 <img className="stars" 
                                 alt="star" 
@@ -49,11 +45,11 @@ class MovieCard extends Component{
                                 <span className="starCount">{stars}</span>
                             </div>
 
-                            {fav? <button className="unfavourite-btn" onClick={this.handleFav}>Un-favourite</button>
-                            :<button className="favourite-btn" onClick={this.handleFav}>Favourite</button>}
+                            {fav? <button className="unfavourite-btn" onClick={() => {ToggleFav(movies)}}>Un-favourite</button>
+                            :<button className="favourite-btn" onClick={() => {ToggleFav(movies)}}>Favourite</button>}
 
-                            {isIncart? <button className="cart-btn-Remv" onClick={this.handleAddToCart}> Remove cart</button>
-                            : <button className="cart-btn" onClick={this.handleAddToCart}> Add to cart</button>}
+                            {isInCart? <button className="cart-btn-Remv" onClick={() => {ToggleCart(movies)}}> Remove cart</button>
+                            : <button className="cart-btn" onClick={() => {ToggleCart(movies)}}> Add to cart</button>}
 
                             
 

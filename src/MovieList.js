@@ -25,7 +25,7 @@ class MovieList extends Component{
                     plot:
                       'When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.',
                     poster:
-                    "https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_SX300.jpg",                  
+                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPF2rcm0aZ8JJ7Uwl8wb0owjpsA3Rk3d0Pug&usqp=CAU",                  
                     rating: '9.0',            
                     price: 199,            
                     stars: 0,            
@@ -50,6 +50,8 @@ class MovieList extends Component{
         }
     }
 
+
+
     // addStars =() =>{
 
     //     if(this.state.stars >= 5){
@@ -62,6 +64,16 @@ class MovieList extends Component{
         
     // }
 
+    // decStars =() =>{
+         
+    //     if(this.state.stars <= 0){
+    //         return;
+    //     }
+
+    //     this.setState({
+    //         stars: this.state.stars -0.5
+    //     });
+
     
     // }
 
@@ -71,7 +83,12 @@ class MovieList extends Component{
 
     //     })
     // }
-   
+    // handleAddToCart =() =>{
+    //     this.setState({
+    //         isIncart: !this.state.isIncart
+
+    //     })
+    // }
 
     handleIncStar = (movie) =>{
         // handleIncStar = (movie1) =>{
@@ -97,7 +114,6 @@ class MovieList extends Component{
 
     }
 
-
     handleDecStar = (movie) =>{
       // handleIncStar = (movie1) =>{
 
@@ -122,6 +138,26 @@ class MovieList extends Component{
 
   }
 
+  handleToggleFav = (movie) =>{
+    const {movies} = this.state;
+    const mid = movies.indexOf(movie);
+    movies[mid].fav = !movies[mid].fav;
+
+    this.setState({
+      movies
+    })
+  }
+
+  handleToggleCart =(movie) =>{
+    const {movies} =this.state;
+    const mid = movies.indexOf(movie);
+    movies[mid].isInCart = !movies[mid].isInCart;
+
+    this.setState({
+      movies
+    })
+  }
+
     render(){
         // const {title,plot,price,rating,stars,fav,isIncart} = this.state.movies;
         const {movies} = this.state;
@@ -138,12 +174,13 @@ class MovieList extends Component{
                         /> */}
            
           {/* <MovieCard movies =(this.state)> */}
-            {movies.map((movie)=> 
-            <MovieCard  movies ={movie} 
-                        addStars ={this.handleIncStar}
-                        decStars ={this.handleDecStar}
-                        key = {movie.id}
-            />)}
+            {movies.map((movie)=> <MovieCard movies ={movie} 
+                                             addStars ={this.handleIncStar}
+                                             decStar = {this.handleDecStar}
+                                             ToggleFav={this.handleToggleFav}
+                                            ToggleCart= {this.handleToggleCart}
+                                            key = {movie.id}
+                                             />)}
             </>
         )
     }
