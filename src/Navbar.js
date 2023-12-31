@@ -49,6 +49,10 @@ visibility: ${(props) => props.show? "visible": "hidden"};
 
 class Navbar extends React.Component{
     render(){
+        // console.log(this.props);
+
+        const {cartCount} = this.props;
+
         return(
             <>
            
@@ -57,7 +61,7 @@ class Navbar extends React.Component{
                 <CartIconContainer>
                     <CartImg alt="Cart Icon" src="https://cdn-icons-png.flaticon.com/128/1170/1170678.png" style={styles.cartIcon}/>
                    {/* Here we are providing the props--> */}
-                    <CartCount color = "yellow" show= {true}>0</CartCount>
+                    <CartCount color = "yellow" show= {true}>{cartCount}</CartCount>
                 </CartIconContainer>
             </Nav>
 
