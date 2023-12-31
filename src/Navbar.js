@@ -47,11 +47,13 @@ fontSize: 12px;
 visibility: ${(props) => props.show? "visible": "hidden"};
 `;
 
-class Navbar extends React.Component{
-    render(){
-        // console.log(this.props);
 
-        const {cartCount} = this.props;
+// function MovieCard(props){
+function Navbar(props){
+    
+        // console.log(props);
+
+        const {cartCount} = props;
 
         return(
             <>
@@ -75,7 +77,7 @@ class Navbar extends React.Component{
             </>
         )
     }
-}
+
 
 export default Navbar;
 
